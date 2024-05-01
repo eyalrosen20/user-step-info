@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import UserInfoModal from './components/UserInfoModal';
 
-function App() {
+const App: React.FC = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true); 
+  const closeModal = () => setModalOpen(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+          <button onClick={openModal}>Open User Info Stepper</button> 
+          <UserInfoModal isOpen={isModalOpen} onClose={closeModal} /> 
+      </div>
   );
-}
+};
 
 export default App;
